@@ -1,0 +1,64 @@
+pipeline {
+    agent any
+    
+    tools{
+        nodejs 'nodeJS22.14'
+    }
+    
+    environment {
+        CLOUDINARY_CLOUD_NAME = credentials('Secret_CLOUDINARY_CLOUD_NAME')
+        CLOUDINARY_KEY = credentials('Secret_CLOUDINARY_KEY')
+        CLOUDINARY_SECRET = credentials('Secret_CLOUDINARY_SECRET')
+        MAPBOX_TOKEN = credentials('Secret_MAPBOX_TOKEN')
+        DB_URL = credentials('Secret_DB_URL')
+    }
+
+    stages {
+        stage('Code checkout') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/krithikasharma-OT/3-Tier-Full-Stack.git'
+            }
+        }
+        
+        stage('Setup required variables'){
+            steps{
+                script{
+                    writeFile file: '.env', text: """
+                        CLOUDINARY_CLOUD_NAME=${env.CLOUDINARY_CLOUD_NAME}
+                        CLOUDINARY_KEY=${env.CLOUDINARY_KEY}
+                        CLOUDINARY_SECRET=${env.CLOUDINARY_SECRET}
+                        MAPBOX_TOKEN=${env.MAPBOX_TOKEN}
+                        DB_URL=${env.DB_URL}
+                        """
+                }
+            }
+        }
+        
+        stage('install nodejs packages') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        
+        stage('run unit tests') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        
+        stage('build and push docker image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-passwd', usernameVariable: 'DockerUser', passwordVariable: 'DockerPass')]) {
+                    sh "docker build -t krithikasharma/nodejscamp:v1 -f Dockerfile ."
+                    sh "docker push krithikasharma/nodejscamp:v1"
+                }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh "docker run -d --name YelpCamp -p 3000:3000 krithikasharma/nodejscamp:v1 "
+            }
+        }
+    }
+}
