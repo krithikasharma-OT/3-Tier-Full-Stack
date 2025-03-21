@@ -6,15 +6,12 @@ metadata:
   namespace: opstree
 type: Opaque
 data: # all below values are not actual, they are base64 encoded, and for db url which is connection string of mongodb encode in base64 within single quotes '<url>' 
-  CLOUDINARY_CLOUD_NAME=ZGp1OHdmemRjCg==
-  CLOUDINARY_KEY=MzY2MzIxNzQ2MTYxODUyCg==
-  CLOUDINARY_SECRET=Vmd6aXJ2VERybXM2TGhPOE9adXJHWTdNdlZ3Cg==
-  MAPBOX_TOKEN=cGsuZXlKMUlqb2lhM0pwZEdocGEyRXhJaXdpWVNJNkltTnRPR2x1TldVME9EQmxOV2N5YW5GNWJU
-  Rm9NelJxTm1raWZRLmFtLTNSSjFXQndKZlRDTk9iLVVJb3cK
-  DB_URL=bW9uZ29kYitzcnY6Ly9rcml0aGlrYXNoYXJtYTIxMjk6bnZhdU9idFA1V0Jxd2ZKY0Btb25nb2Ri
-  Y2x1c3RlcjAuNnA2eDcubW9uZ29kYi5uZXQvP3JldHJ5V3JpdGVzPXRydWUmdz1tYWpvcml0eSZh
-  cHBOYW1lPU1vbmdvREJDbHVzdGVyMAo=
-  SECRET=YW55c2VjcmV0dGV4dAo=
+  CLOUDINARY_CLOUD_NAME: ZGp1OHdmemRj
+  CLOUDINARY_KEY: MzY2MzIxNzQ2MTYxODUy
+  CLOUDINARY_SECRET: Vmd6aXJ2VERybXM2TGhPOE9adXJHWTdNdlZ3
+  MAPBOX_TOKEN: cGsuZXlKMUlqb2lhM0pwZEdocGEyRXhJaXdpWVNJNkltTnRPR2x1TldVME9EQmxOV2N5YW5GNWJURm9NelJxTm1raWZRLmFtLTNSSjFXQndKZlRDTk9iLVVJb3c=
+  DB_URL: bW9uZ29kYitzcnY6Ly9rcml0aGlrYXNoYXJtYTIxMjk6bnZhdU9idFA1V0Jxd2ZKY0Btb25nb2RiY2x1c3RlcjAuNnA2eDcubW9uZ29kYi5uZXQvP3JldHJ5V3JpdGVzPXRydWUmdz1tYWpvcml0eSZhcHBOYW1lPU1vbmdvREJDbHVzdGVyMA==
+  SECRET: YW55c2VjcmV0dGV4dA==
 
 ---
 apiVersion: apps/v1
