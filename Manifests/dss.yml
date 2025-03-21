@@ -4,7 +4,7 @@ kind: Secret
 metadata:
   name: yelp-camp-secrets
 type: Opaque
-data:
+data: # all below values are not actual, they are base64 encoded, and for db url which is connection string of mongodb encode in base64 within single quotes '<url>' 
   CLOUDINARY_CLOUD_NAME: ZGlpMnJvenRw
   CLOUDINARY_KEY: NzU3NjQzMjU3ODkxMzY0
   CLOUDINARY_SECRET: SHpBeTdPU3VCZjJhSUFSUm5Fd0tIcEVtc01N
