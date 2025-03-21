@@ -5,12 +5,15 @@ metadata:
   name: yelp-camp-secrets
 type: Opaque
 data: # all below values are not actual, they are base64 encoded, and for db url which is connection string of mongodb encode in base64 within single quotes '<url>' 
-  CLOUDINARY_CLOUD_NAME: ZGlpMnJvenRw
-  CLOUDINARY_KEY: NzU3NjQzMjU3ODkxMzY0
-  CLOUDINARY_SECRET: SHpBeTdPU3VCZjJhSUFSUm5Fd0tIcEVtc01N
-  MAPBOX_TOKEN: cGsuZXlKMUlqb2lZV1JwYW1GcGMzZGhiQ0lzSW1FaU9pSmpiSFl3TnpKemVHNHhaRzR5TW1wd1ltWm1OSFZ3YlhObUluMC5SVlFZc3UwUnZKZ0NGNTRrMjJkWDBB
-  DB_URL: bW9uZ29kYitzcnY6Ly9qYWlzd2FsYWRpMjQ2OnNjN1ZHU3lkN2RRQ2NMeTFAY2x1c3RlcjAuaXE2bXV0aC5tb25nb2RiLm5ldC8/cmV0cnlXcml0ZXM9dHJ1ZSZ3PW1ham9yaXR5JmFwcE5hbWU9Q2x1c3RlcjA=
-  SECRET: ZGV2b3Bzc2hhY2s=
+  CLOUDINARY_CLOUD_NAME=ZGp1OHdmemRjCg==
+  CLOUDINARY_KEY=MzY2MzIxNzQ2MTYxODUyCg==
+  CLOUDINARY_SECRET=Vmd6aXJ2VERybXM2TGhPOE9adXJHWTdNdlZ3Cg==
+  MAPBOX_TOKEN=cGsuZXlKMUlqb2lhM0pwZEdocGEyRXhJaXdpWVNJNkltTnRPR2x1TldVME9EQmxOV2N5YW5GNWJU
+  Rm9NelJxTm1raWZRLmFtLTNSSjFXQndKZlRDTk9iLVVJb3cK
+  DB_URL=bW9uZ29kYitzcnY6Ly9rcml0aGlrYXNoYXJtYTIxMjk6bnZhdU9idFA1V0Jxd2ZKY0Btb25nb2Ri
+  Y2x1c3RlcjAuNnA2eDcubW9uZ29kYi5uZXQvP3JldHJ5V3JpdGVzPXRydWUmdz1tYWpvcml0eSZh
+  cHBOYW1lPU1vbmdvREJDbHVzdGVyMAo=
+  SECRET=YW55c2VjcmV0dGV4dAo=
 
 ---
 apiVersion: apps/v1
@@ -29,7 +32,7 @@ spec:
     spec:
       containers:
         - name: yelp-camp-container
-          image: adijaiswal/campa:latest
+          image: krithikasharma/nodejscamp:v1
           ports:
             - containerPort: 3000
           env:
