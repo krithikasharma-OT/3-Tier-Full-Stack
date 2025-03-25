@@ -1,6 +1,9 @@
 {
   "name": "yelpcamp",
   "version": "1.0.0",
+  "publishConfig": {
+    "registry": "http://3.109.153.161:8081/repository/npm-repo/"
+  }
   "description": "",
   "main": "index.js",
   "scripts": {
