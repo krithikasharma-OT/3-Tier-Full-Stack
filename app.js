@@ -100,6 +100,7 @@ const connectSrcUrls = [
     "https://api.mapbox.com/",
     "https://a.tiles.mapbox.com/",
     "https://b.tiles.mapbox.com/",
+    "https://c.tiles.mapbox.com/",
     "https://events.mapbox.com/",
 ];
 const fontSrcUrls = [];
