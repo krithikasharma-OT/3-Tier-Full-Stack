@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"There are no test-cases\" && exit 0",
+    "sonar": "node sonar-project.js",
     "start": "node app.js"
   },
   "keywords": [],
