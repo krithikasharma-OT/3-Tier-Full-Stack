@@ -1,9 +1,6 @@
 {
   "name": "yelpcamp",
   "version": "1.0.0",
-  "publishConfig": {
-    "registry": "http://3.109.153.161:8081/repository/npm-repo/"
-  }
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -34,5 +31,8 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.0.1",
     "sanitize-html": "^1.27.4"
+  },
+  "publishConfig": {
+    "registry": "http://3.109.153.161:8081/repository/npm-repo/"
   }
 }
