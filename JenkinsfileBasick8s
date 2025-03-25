@@ -1,0 +1,82 @@
+pipeline {
+    agent any
+    
+    tools{
+        nodejs 'nodeJS22.14'
+    }
+
+    stages {
+        stage('Code checkout') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/krithikasharma-OT/3-Tier-Full-Stack.git'
+            }
+        }
+        
+        stage('install nodejs packages') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        
+        stage('run unit tests') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        
+        stage('build and push docker image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-passwd', usernameVariable: 'DockerUser', passwordVariable: 'DockerPass')]) {
+                    sh "docker build -t krithikasharma/nodejscamp:v1 -f Dockerfile ."
+                    sh "docker push krithikasharma/nodejscamp:v1"
+                }
+            }
+        }
+        
+        stage('Create Service account and assign role') {
+            steps {
+                sh "kubectl apply -f ./Manifests/ConfigureAccess.yml"
+                sh "sleep 10"
+                sh "kubectl describe secret mysecretname -n opstree"
+            }
+        }
+        
+         stage('Update the secret token in jenkins credentials') { 
+            steps {
+                script {
+                    def userInput = input(
+                        message: 'Updated the secret?',
+                        parameters: [
+                            choice(name: 'Proceed', choices: ['Yes', 'No'], description: 'Select Yes to continue, No to stop.')
+                        ]
+                    )
+                    if (userInput == 'No') {
+                        error("Deployment aborted by user.")
+                    }
+                }
+            }
+        }
+
+        
+        stage('Deploy to k8s') {
+            steps {
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'my-eks-cluster', contextName: '', credentialsId: 'k8s-serviceaccount-token', namespace: 'opstree', serverUrl: 'https://7AA342D1F24E17934E5E94F074554AAD.yl4.ap-south-1.eks.amazonaws.com']]) {
+                    sh "kubectl apply -f ./Manifests/dss.yml"
+                    sh "sleep 40"
+                }
+            }
+        }
+        
+        stage('Check if k8s deployment created') {
+            steps {
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'my-eks-cluster', contextName: '', credentialsId: 'k8s-serviceaccount-token', namespace: 'opstree', serverUrl: 'https://7AA342D1F24E17934E5E94F074554AAD.yl4.ap-south-1.eks.amazonaws.com']]) {
+                    sh "kubectl get pods -n opstree"
+                    sh "kubectl get svc -n opstree"
+                    
+                }
+            }
+        }
+        
+        
+    }
+}
