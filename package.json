@@ -33,6 +33,6 @@
     "sanitize-html": "^1.27.4"
   },
   "publishConfig": {
-    "registry": "http://13.203.158.200:8081/repository/npm-hosted/"
+    "registry": "http://13.233.119.179:8081/repository/npm-hosted/"
   }
 }
