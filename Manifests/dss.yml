@@ -11,7 +11,7 @@ data: # all below values are not actual, they are base64 encoded, and for db url
   CLOUDINARY_SECRET: Vmd6aXJ2VERybXM2TGhPOE9adXJHWTdNdlZ3
   MAPBOX_TOKEN: cGsuZXlKMUlqb2lhM0pwZEdocGEyRXhJaXdpWVNJNkltTnRPR2x1TldVME9EQmxOV2N5YW5GNWJURm9NelJxTm1raWZRLmFtLTNSSjFXQndKZlRDTk9iLVVJb3c=
   # Below is of Local In Private Subnet
-  DB_URL: bW9uZ29kYjovL0plbmtpbnM6amVua2luczEyM0AxOTIuMTY4Ljg4LjE2MjoyNzAxNy9NeURi
+  DB_URL: bW9uZ29kYjovL0plbmtpbnM6amVua2luczEyM0AxOTIuMTY4LjExNi40NToyNzAxNy9NeURi
   # Below is of Atlas
   #DB_URL: bW9uZ29kYitzcnY6Ly9rcml0aGlrYXNoYXJtYTIxMjk6bnZhdU9idFA1V0Jxd2ZKY0Btb25nb2RiY2x1c3RlcjAuNnA2eDcubW9uZ29kYi5uZXQvP3JldHJ5V3JpdGVzPXRydWUmdz1tYWpvcml0eSZhcHBOYW1lPU1vbmdvREJDbHVzdGVyMA==
   SECRET: YW55c2VjcmV0dGV4dA==
